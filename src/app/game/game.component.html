@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="row" style="background-color:#fff;">
+    <div *ngFor="let p of players" class="col-sm-6 player-panel" 
+    [class.active]="p.active">
+      <span>{{ p.name }}</span>
+      <div>{{ p.score }}</div>
+      <div>{{ p.roundScore }}</div>
+    </div>
+    <button (click)="newGame($event)"class="btn btn-primary" style="position:absolute; top:10%; left:50%; transform: translateX(-50%); text-align:center;">NEW GAME</button>
+    <button (click)="rollDice($event)" class="btn btn-primary" style="position:absolute; top:70%; left:50%; transform: translateX(-50%); text-align:center;">ROLL DICE</button>
+    <button (click)="hold($event)" class="btn btn-primary" style="position:absolute; top:85%; left:50%; transform: translateX(-50%); text-align:center;">HOLD</button>
+
+    <div [hidden]="showDices" style="position:absolute; top:35%; left:50%; transform: translateX(-50%); text-align:center;">{{ dice1 }}</div>
+    <div [hidden]="showDices" style="position:absolute; top:45%; left:50%; transform: translateX(-50%); text-align:center;">{{ dice2 }}</div>
+
+
+
+  </div>
+</div>
