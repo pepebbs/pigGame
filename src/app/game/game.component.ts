@@ -15,19 +15,28 @@ export class GameComponent implements OnInit {
   dice1:number;
   dice2:number;
   showDices:boolean;
+  rollingDice:boolean;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() { 
     this.players = this.gameService.init(); 
     this.showDices = false;
+    this.rollingDice = true;
   }
 
+  
+
+
   rollDice(){ 
-    this.dices = this.gameService.rollDice(); 
-    this.dice1 = this.dices[0];
-    this.dice2 = this.dices[1];
-    this.showDices = false;
+    this.rollingDice = false;
+    setTimeout(() => {
+      this.dices = this.gameService.rollDice();
+      this.rollingDice = true;
+      this.dice1 = this.dices[0];
+      this.dice2 = this.dices[1];
+      this.showDices = false;
+    }, 1200);
   }
 
   hold(){ this.gameService.hold(); }
